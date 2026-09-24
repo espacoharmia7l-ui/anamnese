@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anamnese · Espaço Harmia</title>
+<meta name="description" content="Ficha de anamnese do Espaço Harmia. Leva cerca de 10 minutos.">
+<meta property="og:title" content="Anamnese · Espaço Harmia">
+<meta property="og:description" content="Preencha antes da sua primeira aula. Leva cerca de 10 minutos.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2F5D50">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2EF; --surface:#FFFFFF; --ink:#1E2925; --muted:#5E6D67;
+  --line:#D3DCD7; --brand:#2F5D50; --brand-ink:#FFFFFF; --soft:#DDE8E2;
+  --alert:#8A3B2E; --alert-bg:#F6E6E1; --focus:#6B4A7A;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141B18; --surface:#1C2521; --ink:#E6EEEA; --muted:#9DB0A8;
+    --line:#2E3A35; --brand:#7FB8A4; --brand-ink:#10201A; --soft:#24332D;
+    --alert:#F0A796; --alert-bg:#3A231E; --focus:#C9A6DA;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141B18; --surface:#1C2521; --ink:#E6EEEA; --muted:#9DB0A8;
+  --line:#2E3A35; --brand:#7FB8A4; --brand-ink:#10201A; --soft:#24332D;
+  --alert:#F0A796; --alert-bg:#3A231E; --focus:#C9A6DA;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.5 "Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding:0 20px 120px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:14px 0 12px}
+.brandline{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--muted)}
+.brandline b{color:var(--ink);font-weight:600}
+.bar{height:4px;background:var(--line);border-radius:4px;margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brand);width:0;transition:width .35s ease}
+h1{font-family:"Young Serif",Georgia,serif;font-weight:400;font-size:40px;line-height:1.05;margin:28px 0 10px;letter-spacing:-.01em}
+h2{font-family:"Young Serif",Georgia,serif;font-weight:400;font-size:28px;line-height:1.15;margin:24px 0 6px}
+.lead{color:var(--muted);margin:0 0 8px;max-width:46ch}
+.field{margin:26px 0 0}
+.field>.lbl{display:block;font-weight:600;margin-bottom:8px;line-height:1.35}
+.field .hint{display:block;font-weight:400;color:var(--muted);font-size:14px;margin-top:2px}
+.req{color:var(--brand);margin-left:2px}
+input[type=text],input[type=tel],input[type=email],input[type=date],textarea{
+  width:100%;font:inherit;color:var(--ink);background:var(--surface);
+  border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;outline:none;
+  -webkit-appearance:none;appearance:none;min-height:50px}
+textarea{min-height:92px;resize:vertical}
+input:focus,textarea:focus{border-color:var(--brand)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative;display:inline-flex}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt span{display:inline-block;padding:10px 15px;border:1.5px solid var(--line);border-radius:999px;
+  background:var(--surface);font-size:15px;line-height:1.3;user-select:none;transition:background .15s,border-color .15s}
+.opt input:checked+span{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.opt input:focus-visible+span,.agree input:focus-visible+span{outline:2px solid var(--focus);outline-offset:2px}
+.opts.stack{flex-direction:column}
+.opts.stack .opt span{border-radius:12px;width:100%}
+.opts.stack .opt{width:100%}
+.scale{display:grid;grid-template-columns:repeat(11,1fr);gap:4px}
+.scale .opt span{padding:10px 0;width:100%;text-align:center;border-radius:10px;font-variant-numeric:tabular-nums}
+.scale-ends{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:6px}
+.agree{position:relative;display:flex;gap:12px;align-items:flex-start;padding:14px;border:1.5px solid var(--line);
+  border-radius:12px;background:var(--surface);cursor:pointer}
+.agree input{position:absolute;opacity:0;width:1px;height:1px}
+.agree .box{flex:0 0 22px;height:22px;border:2px solid var(--line);border-radius:6px;margin-top:1px;display:grid;place-items:center}
+.agree input:checked~.box{background:var(--brand);border-color:var(--brand)}
+.agree input:checked~.box::after{content:"";width:6px;height:11px;border:solid var(--brand-ink);border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.agree .txt{font-weight:400;line-height:1.45}
+.err{display:none;color:var(--alert);font-size:14px;margin-top:6px}
+.field.invalid .err{display:block}
+.field.invalid input[type=text],.field.invalid input[type=tel],.field.invalid input[type=email],.field.invalid input[type=date],.field.invalid textarea,.field.invalid .agree{border-color:var(--alert)}
+[hidden]{display:none!important}
+.note{background:var(--alert-bg);color:var(--alert);border-radius:12px;padding:12px 14px;font-size:15px;margin-top:22px}
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);
+  padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px))}
+.nav .in{max-width:560px;margin:0 auto;display:flex;gap:10px}
+button{font:inherit;font-weight:600;border-radius:12px;padding:14px 18px;min-height:52px;cursor:pointer;border:1.5px solid transparent}
+button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.primary{flex:1;background:var(--brand);color:var(--brand-ink)}
+.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.summary{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:4px 16px 12px;margin-top:20px}
+.summary h3{font-family:"Young Serif",Georgia,serif;font-weight:400;font-size:19px;margin:18px 0 6px}
+.summary dl{margin:0}
+.summary dt{color:var(--muted);font-size:14px;margin-top:8px}
+.summary dd{margin:0;white-space:pre-wrap;word-break:break-word}
+.actions{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.actions a{text-decoration:none;text-align:center;display:block}
+.toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);
+  background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:15px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+#fallback{width:100%;min-height:200px;margin-top:12px;font-size:13px}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brandline"><b>Espaço Harmia</b><span id="stepCount"></span></div>
+    <div class="bar" aria-hidden="true"><i id="barFill"></i></div>
+  </header>
+  <main id="app"></main>
+</div>
+<nav class="nav" id="nav"><div class="in">
+  <button type="button" class="ghost" id="backBtn">Voltar</button>
+  <button type="button" class="primary" id="nextBtn">Continuar</button>
+</div></nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// Número do studio para receber as anamneses (só dígitos, com 55 + DDD). Vazio = o aluno escolhe o contato.
+const WHATSAPP_STUDIO = "5531996414943";
+const STORE_KEY = "harmia-anamnese-v2";
+
+const yes = (id)=> s => s[id] === "Sim";
+const idade = s => {
+  if(!s.nascimento) return null;
+  const d = new Date(s.nascimento + "T12:00:00"); if(isNaN(d)) return null;
+  const n = new Date(); let a = n.getFullYear()-d.getFullYear();
+  if(n.getMonth()<d.getMonth() || (n.getMonth()===d.getMonth() && n.getDate()<d.getDate())) a--;
+  return a;
+};
+
+const STEPS = [
+ { id:"pessoal", title:"Sobre você", intro:"Suas respostas ajudam o professor a montar um treino seguro e do seu jeito. Leva uns 10 minutos.", fields:[
+  {id:"nome", label:"Nome completo", type:"text", req:true, auto:"name"},
+  {id:"nascimento", label:"Data de nascimento", type:"date", req:true, max:new Date().toISOString().slice(0,10)},
+  {id:"sexo", label:"Sexo", type:"radio", req:true, options:["Feminino","Masculino","Prefiro não informar"]},
+  {id:"whatsapp", label:"WhatsApp", type:"tel", req:true, placeholder:"(31) 9 0000-0000", auto:"tel"},
+  {id:"email", label:"E-mail", type:"email", auto:"email"},
+  {id:"profissao", label:"Profissão", type:"text"},
+  {id:"bairro", label:"Bairro onde mora", type:"text"},
+  {id:"emerg_nome", label:"Contato de emergência", hint:"Nome e grau de parentesco", type:"text", req:true},
+  {id:"emerg_tel", label:"Telefone do contato de emergência", type:"tel", req:true},
+  {id:"origem", label:"Como conheceu o Harmia?", type:"radio", options:["Indicação","Instagram","Google","Passei em frente","Outro"]},
+ ]},
+ { id:"objetivos", title:"Seus objetivos", intro:"Conte o que você quer conquistar e o que já praticou.", fields:[
+  {id:"modalidade", label:"Qual modalidade te interessa?", type:"radio", req:true, options:["Pilates","Musculação","Os dois (treino híbrido)","Ainda não sei"]},
+  {id:"objetivos", label:"Quais são seus objetivos?", hint:"Pode marcar mais de um", type:"checks", req:true, options:["Aliviar dores","Melhorar a postura","Ganhar força","Ganhar massa muscular","Emagrecer","Flexibilidade e mobilidade","Condicionamento físico","Reabilitação de lesão","Reduzir o estresse","Gestação ou pós-parto","Saúde e qualidade de vida"]},
+  {id:"objetivo_principal", label:"Em uma frase: o que você quer ter conquistado daqui a 3 meses?", type:"textarea"},
+  {id:"experiencia", label:"O que você já praticou?", type:"checks", none:"Nunca pratiquei", options:["Nunca pratiquei","Pilates","Musculação","Caminhada ou corrida","Yoga","Natação","Dança","Lutas","Esportes coletivos","Outro"]},
+  {id:"atividade_atual", label:"Com que frequência você se exercita hoje?", type:"radio", req:true, options:["Não me exercito","1 a 2 vezes por semana","3 vezes ou mais"]},
+  {id:"frequencia", label:"Quantas vezes por semana pretende treinar?", type:"radio", options:["2 vezes","3 vezes","4 vezes ou mais"]},
+  {id:"horario", label:"Melhores horários para você", type:"checks", options:["Manhã","Tarde","Noite"]},
+ ]},
+ { id:"preferencias", title:"Seu jeito de treinar", intro:"Treino bom é treino que você gosta de fazer. Conte suas preferências.", fields:[
+  {id:"pausas", label:"Como você prefere o ritmo do treino?", type:"radio", req:true, options:["Com pausas maiores para recuperar","Com pausas curtas","Sem pausa, bem dinâmico","Tanto faz"]},
+  {id:"gosta", label:"Que tipo de exercício você gosta?", hint:"Pode marcar mais de um", type:"checks", options:["Aparelhos de Pilates","Pilates no solo","Pesos livres (halteres, barras)","Máquinas de musculação","Exercícios funcionais","Treino em circuito","Abdômen e core","Alongamento e mobilidade","Cardio (bike, esteira, corda)","Exercícios com o peso do corpo"]},
+  {id:"nao_gosta", label:"E quais você não gosta?", type:"checks", options:["Aparelhos de Pilates","Pilates no solo","Pesos livres (halteres, barras)","Máquinas de musculação","Exercícios funcionais","Treino em circuito","Abdômen e core","Alongamento e mobilidade","Cardio (bike, esteira, corda)","Exercícios com o peso do corpo"]},
+  {id:"preferencias_obs", label:"Quer contar mais alguma preferência?", hint:"Ex.: não gosta de exercícios deitado, prefere treinar com música", type:"textarea"},
+  {id:"experiencia_ruim", label:"Já treinou em algum lugar e não gostou?", type:"yesno", req:true},
+  {id:"experiencia_ruim_desc", label:"O que não gostou e por quê?", type:"textarea", req:true, show:yes("experiencia_ruim")},
+ ]},
+ { id:"parq", title:"Prontidão para atividade física", intro:"Questionário PAR-Q. Responda com sinceridade: um \"sim\" não impede o treino, só nos ajuda a adaptar.", fields:[
+  {id:"parq1", label:"Algum médico já disse que você tem problema de coração e que só deve fazer atividade física com supervisão?", type:"yesno", req:true},
+  {id:"parq2", label:"Você sente dor no peito quando faz atividade física?", type:"yesno", req:true},
+  {id:"parq3", label:"No último mês, sentiu dor no peito mesmo sem estar fazendo atividade física?", type:"yesno", req:true},
+  {id:"parq4", label:"Você perde o equilíbrio por tontura ou já perdeu a consciência?", type:"yesno", req:true},
+  {id:"parq5", label:"Tem algum problema nos ossos ou articulações que pode piorar com exercício?", type:"yesno", req:true},
+  {id:"parq6", label:"Toma remédio para pressão arterial ou para o coração?", type:"yesno", req:true},
+  {id:"parq7", label:"Sabe de algum outro motivo para não praticar atividade física?", type:"yesno", req:true},
+  {id:"parq7_desc", label:"Qual motivo?", type:"textarea", show:yes("parq7")},
+ ], note: s => [1,2,3,4,5,6,7].some(i=>s["parq"+i]==="Sim") ? "Obrigado por contar. Como você respondeu \"sim\" a alguma pergunta, podemos pedir uma liberação médica antes de começar. O professor vai conversar com você sobre isso." : ""},
+ { id:"saude", title:"Histórico de saúde", intro:"Essas informações ficam só com a equipe do studio.", fields:[
+  {id:"condicoes", label:"Você tem ou já teve alguma destas condições?", hint:"Marque todas que se aplicam", type:"checks", req:true, none:"Nenhuma", options:["Pressão alta","Pressão baixa","Diabetes","Problema cardíaco","Colesterol alto","Asma ou bronquite","Tireoide","Osteoporose ou osteopenia","Hérnia de disco","Escoliose","Artrose","Tendinite ou bursite","Fibromialgia","Labirintite ou tontura","Epilepsia","Varizes ou trombose","Ansiedade ou depressão","Nenhuma"]},
+  {id:"condicoes_outras", label:"Alguma outra condição de saúde?", type:"text"},
+  {id:"cronica", label:"Tem alguma doença crônica diagnosticada?", type:"yesno", req:true},
+  {id:"cronica_desc", label:"Qual, desde quando e como está o controle?", type:"textarea", req:true, show:yes("cronica")},
+  {id:"cirurgia", label:"Já fez alguma cirurgia?", type:"yesno", req:true},
+  {id:"cirurgia_desc", label:"Quais e quando?", type:"textarea", req:true, show:yes("cirurgia")},
+  {id:"implantes", label:"Tem prótese, pino, placa, parafuso ou marcapasso?", type:"yesno", req:true},
+  {id:"implantes_desc", label:"Qual e onde?", type:"text", req:true, show:yes("implantes")},
+  {id:"medicamentos", label:"Usa algum medicamento regularmente?", type:"yesno", req:true},
+  {id:"medicamentos_desc", label:"Quais?", type:"textarea", req:true, show:yes("medicamentos")},
+  {id:"acompanhamento", label:"Está em acompanhamento médico ou de fisioterapia?", type:"yesno", req:true},
+  {id:"acompanhamento_desc", label:"Com qual profissional e por quê?", type:"text", show:yes("acompanhamento")},
+  {id:"gestacao", label:"Gestação", type:"radio", req:true, options:["Não estou grávida","Estou grávida","Tive bebê há menos de 1 ano"], show:s=>s.sexo==="Feminino"},
+  {id:"gestacao_semanas", label:"Quantas semanas de gestação?", type:"text", req:true, show:s=>s.sexo==="Feminino" && s.gestacao==="Estou grávida"},
+  {id:"gestacao_liberacao", label:"Seu médico liberou a atividade física?", type:"yesno", req:true, show:s=>s.sexo==="Feminino" && s.gestacao && s.gestacao!=="Não estou grávida"},
+  {id:"alergias", label:"Tem alguma alergia?", hint:"Deixe em branco se não tiver", type:"text"},
+  {id:"fuma", label:"Você fuma?", type:"radio", options:["Não","Sim","Ex-fumante"]},
+  {id:"alcool", label:"Consumo de bebida alcoólica", type:"radio", options:["Não bebo","Socialmente","Com frequência"]},
+ ]},
+ { id:"dores", title:"Dores e lesões", intro:"Assim o professor sabe o que proteger e o que fortalecer.", fields:[
+  {id:"dor", label:"Você sente alguma dor hoje?", type:"yesno", req:true},
+  {id:"dor_regioes", label:"Onde?", type:"checks", req:true, show:yes("dor"), options:["Pescoço","Ombros","Costas (meio)","Lombar","Quadril","Joelhos","Tornozelos ou pés","Punhos ou mãos","Cotovelos","Cabeça","Outro"]},
+  {id:"dor_intensidade", label:"De 0 a 10, qual a intensidade da dor?", type:"scale", req:true, show:yes("dor"), ends:["Sem dor","Insuportável"]},
+  {id:"dor_piora", label:"O que piora ou alivia a dor?", type:"textarea", show:yes("dor")},
+  {id:"limitacao_fisica", label:"Tem alguma limitação física?", hint:"Movimento que não consegue fazer ou faz com dificuldade", type:"yesno", req:true},
+  {id:"limitacao_fisica_desc", label:"Qual limitação?", type:"textarea", req:true, show:yes("limitacao_fisica")},
+  {id:"limitacao_dia", label:"Sente dificuldade em alguma destas atividades do dia a dia?", type:"checks", req:true, none:"Nenhuma", options:["Subir escadas","Agachar","Levantar do chão","Carregar peso","Pegar algo acima da cabeça","Ficar muito tempo em pé","Ficar muito tempo sentado","Caminhar distâncias longas","Nenhuma"]},
+  {id:"lesoes", label:"Já teve alguma lesão?", hint:"Entorse, fratura, ruptura, luxação… conte qual e quando", type:"textarea"},
+  {id:"restricao", label:"Algum médico ou fisioterapeuta pediu para evitar algum movimento?", type:"yesno", req:true},
+  {id:"restricao_desc", label:"Qual movimento?", type:"text", req:true, show:yes("restricao")},
+ ]},
+ { id:"rotina", title:"Sua rotina", intro:"Sono, trabalho e estresse mudam muito a resposta ao treino.", fields:[
+  {id:"trabalho", label:"No trabalho, você passa mais tempo", type:"radio", req:true, options:["Sentado","Em pé","Alternando","Fazendo esforço físico"]},
+  {id:"sono_horas", label:"Quantas horas dorme por noite?", type:"radio", req:true, options:["Menos de 5h","5 a 6h","7 a 8h","Mais de 8h"]},
+  {id:"sono_qualidade", label:"Como é seu sono?", hint:"Pode marcar mais de um", type:"checks", req:true, options:["Durmo bem e acordo descansado","Demoro a pegar no sono","Acordo várias vezes à noite","Acordo cansado","Ronco ou tenho apneia","Durmo em horários irregulares"]},
+  {id:"estresse", label:"Seu nível de estresse no dia a dia", type:"radio", options:["Baixo","Moderado","Alto"]},
+  {id:"alimentacao_tipo", label:"Qual o seu tipo de alimentação?", type:"radio", req:true, options:["Como de tudo","Vegetariana","Vegana","Low carb ou cetogênica","Com restrição (intolerância, alergia)","Outra"]},
+  {id:"alimentacao_tipo_desc", label:"Conte um pouco mais", type:"text", show:s=>["Com restrição (intolerância, alergia)","Outra"].includes(s.alimentacao_tipo)},
+  {id:"refeicoes", label:"Quantas refeições faz por dia?", type:"radio", options:["1 a 2","3 a 4","5 ou mais"]},
+  {id:"alimentacao", label:"Como avalia sua alimentação?", type:"radio", options:["Equilibrada","Regular","Desregulada"]},
+  {id:"acompanhamento_nutri", label:"Tem acompanhamento com nutricionista?", type:"yesno"},
+  {id:"agua", label:"Quanta água bebe por dia?", type:"radio", options:["Menos de 1 litro","1 a 2 litros","Mais de 2 litros"]},
+ ]},
+ { id:"termo", title:"Termo e consentimento", intro:"Último passo. Leia e confirme.", fields:[
+  {id:"t_verdade", type:"agree", req:true, text:"Declaro que as informações acima são verdadeiras e que vou avisar o studio sobre qualquer mudança no meu estado de saúde."},
+  {id:"t_limites", type:"agree", req:true, text:"Estou ciente de que devo respeitar meus limites durante as aulas e avisar o professor se sentir dor, tontura ou mal-estar."},
+  {id:"t_lgpd", type:"agree", req:true, text:"Autorizo o Espaço Harmia a guardar estes dados, inclusive os de saúde, somente para planejar e acompanhar meus treinos, conforme a LGPD (Lei 13.709/2018)."},
+  {id:"responsavel", label:"Nome completo do responsável legal", hint:"Obrigatório para menores de 18 anos", type:"text", req:true, show:s=>{const a=idade(s);return a!==null && a<18;}},
+  {id:"assinatura", label:"Assinatura", hint:"Digite seu nome completo", type:"text", req:true},
+ ]},
+];
+
+let state = {}; let step = 0;
+try{ const raw = localStorage.getItem(STORE_KEY); if(raw){ const o = JSON.parse(raw); state = o.state||{}; step = Math.min(o.step||0, STEPS.length); } }catch(e){}
+const save = ()=>{ try{ localStorage.setItem(STORE_KEY, JSON.stringify({state, step})); }catch(e){} };
+
+const app = document.getElementById("app");
+const esc = t => String(t).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const visible = f => !f.show || f.show(state);
+const filled = v => Array.isArray(v) ? v.length>0 : (v!==undefined && v!==null && String(v).trim()!=="" && v!==false);
+
+function fieldHTML(f){
+  const v = state[f.id];
+  const name = esc(f.id);
+  const lbl = f.label ? `<span class="lbl" id="l_${name}">${esc(f.label)}${f.req?'<span class="req" aria-hidden="true">*</span>':''}${f.hint?`<span class="hint">${esc(f.hint)}</span>`:''}</span>` : "";
+  let body = "";
+  if(["text","tel","email","date"].includes(f.type)){
+    body = `<input type="${f.type}" id="f_${name}" name="${name}" value="${esc(v||"")}" ${f.placeholder?`placeholder="${esc(f.placeholder)}"`:""} ${f.auto?`autocomplete="${f.auto}"`:""} ${f.type==="tel"?'inputmode="tel"':""} ${f.max?`max="${f.max}"`:""} aria-labelledby="l_${name}">`;
+  } else if(f.type==="textarea"){
+    body = `<textarea id="f_${name}" name="${name}" aria-labelledby="l_${name}">${esc(v||"")}</textarea>`;
+  } else if(f.type==="radio" || f.type==="yesno"){
+    const opts = f.type==="yesno" ? ["Sim","Não"] : f.options;
+    const stack = f.type==="radio" && opts.some(o=>o.length>22);
+    body = `<div class="opts${stack?' stack':''}" role="radiogroup" aria-labelledby="l_${name}">` + opts.map(o=>
+      `<label class="opt"><input type="radio" name="${name}" value="${esc(o)}" ${v===o?"checked":""}><span>${esc(o)}</span></label>`).join("") + `</div>`;
+  } else if(f.type==="checks"){
+    const arr = Array.isArray(v)?v:[];
+    body = `<div class="opts" role="group" aria-labelledby="l_${name}">` + f.options.map(o=>
+      `<label class="opt"><input type="checkbox" name="${name}" value="${esc(o)}" ${arr.includes(o)?"checked":""}><span>${esc(o)}</span></label>`).join("") + `</div>`;
+  } else if(f.type==="scale"){
+    body = `<div class="scale opts" role="radiogroup" aria-labelledby="l_${name}">` + Array.from({length:11},(_,i)=>
+      `<label class="opt"><input type="radio" name="${name}" value="${i}" ${String(v)===String(i)?"checked":""}><span>${i}</span></label>`).join("") +
+      `</div><div class="scale-ends"><span>${esc(f.ends[0])}</span><span>${esc(f.ends[1])}</span></div>`;
+  } else if(f.type==="agree"){
+    body = `<label class="agree"><input type="checkbox" name="${name}" ${v?"checked":""}><span class="box" aria-hidden="true"></span><span class="txt">${esc(f.text)}</span></label>`;
+  }
+  const errMsg = f.id==="nascimento" ? "Confira a data de nascimento." : f.type==="agree" ? "Confirme para continuar." : (f.type==="checks"||f.type==="radio"||f.type==="yesno"||f.type==="scale") ? "Escolha uma opção." : "Preencha este campo.";
+  return `<div class="field" data-field="${name}" ${visible(f)?"":"hidden"}>${lbl}${body}<div class="err">${errMsg}</div></div>`;
+}
+
+function renderStep(){
+  const s = STEPS[step];
+  document.getElementById("stepCount").textContent = `Etapa ${step+1} de ${STEPS.length}`;
+  document.getElementById("barFill").style.width = (step/STEPS.length*100)+"%";
+  app.innerHTML = (step===0?`<h1>Anamnese</h1>`:"") + `<h2>${esc(s.title)}</h2><p class="lead">${esc(s.intro)}</p>` +
+    s.fields.map(fieldHTML).join("") + `<div class="note" id="stepNote" hidden></div>`;
+  document.getElementById("backBtn").hidden = step===0;
+  document.getElementById("nextBtn").textContent = step===STEPS.length-1 ? "Revisar respostas" : "Continuar";
+  document.getElementById("nav").hidden = false;
+  refresh();
+}
+
+function refresh(){
+  const s = STEPS[step]; if(!s) return;
+  s.fields.forEach(f=>{
+    const el = app.querySelector(`[data-field="${f.id}"]`);
+    if(el) el.hidden = !visible(f);
+  });
+  const n = document.getElementById("stepNote");
+  if(n){ const t = s.note ? s.note(state) : ""; n.hidden = !t; n.textContent = t; }
+}
+
+app.addEventListener("input", onChange);
+app.addEventListener("change", onChange);
+function onChange(e){
+  const t = e.target; if(!t.name) return;
+  const f = STEPS[step]?.fields.find(x=>x.id===t.name); if(!f) return;
+  if(f.type==="checks"){
+    let arr = Array.from(app.querySelectorAll(`input[name="${t.name}"]:checked`)).map(i=>i.value);
+    if(f.none && e.type==="change"){
+      if(t.value===f.none && t.checked){ arr=[f.none]; }
+      else if(t.checked){ arr = arr.filter(x=>x!==f.none); }
+      app.querySelectorAll(`input[name="${t.name}"]`).forEach(i=>i.checked = arr.includes(i.value));
+    }
+    state[f.id] = arr;
+    const other = {gosta:"nao_gosta", nao_gosta:"gosta"}[f.id];
+    if(other && t.checked && Array.isArray(state[other]) && state[other].includes(t.value)){
+      state[other] = state[other].filter(x=>x!==t.value);
+      app.querySelectorAll(`input[name="${other}"]`).forEach(i=>{ if(i.value===t.value) i.checked=false; });
+    }
+  } else if(f.type==="agree"){ state[f.id] = t.checked; }
+  else { state[f.id] = t.value; }
+  const wrap = t.closest(".field"); if(wrap && filled(state[f.id])) wrap.classList.remove("invalid");
+  refresh(); save();
+}
+
+function validate(){
+  let first = null;
+  STEPS[step].fields.forEach(f=>{
+    const el = app.querySelector(`[data-field="${f.id}"]`);
+    let bad = f.req && visible(f) && !filled(state[f.id]);
+    if(!bad && f.id==="nascimento"){ const a = idade(state); bad = a===null || a<5 || a>100; }
+    el.classList.toggle("invalid", bad);
+    if(bad && !first) first = el;
+  });
+  if(first){ first.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth", block:"start"}); const i=first.querySelector("input,textarea"); if(i && ["text","tel","email","date","textarea"].includes(i.type||i.tagName.toLowerCase())) i.focus({preventScroll:true}); }
+  return !first;
+}
+
+document.getElementById("nextBtn").addEventListener("click", ()=>{
+  if(!validate()) return;
+  step++; save();
+  if(step>=STEPS.length) renderSummary(); else renderStep();
+  window.scrollTo(0,0);
+});
+document.getElementById("backBtn").addEventListener("click", ()=>{
+  if(step>0){ step--; save(); renderStep(); window.scrollTo(0,0); }
+});
+
+function fmt(f, v){
+  if(Array.isArray(v)) return v.join(", ");
+  if(f.type==="date"){ const [y,m,d]=String(v).split("-"); const a=idade(state); return `${d}/${m}/${y}` + (a!==null?` (${a} anos)`:""); }
+  if(f.type==="scale") return `${v}/10`;
+  if(f.type==="agree") return v ? "Confirmado" : "";
+  return String(v);
+}
+function alerts(){
+  const a = [];
+  if([1,2,3,4,5,6,7].some(i=>state["parq"+i]==="Sim")) a.push("PAR-Q com resposta \"sim\": avaliar liberação médica");
+  if(state.gestacao && state.gestacao!=="Não estou grávida" && state.sexo==="Feminino") a.push(state.gestacao);
+  if(state.dor==="Sim" && Number(state.dor_intensidade)>=7) a.push(`Dor intensa (${state.dor_intensidade}/10)`);
+  if(state.limitacao_fisica==="Sim") a.push("Tem limitação física");
+  if(state.cronica==="Sim") a.push("Tem doença crônica");
+  if(state.restricao==="Sim") a.push("Tem restrição de movimento indicada por profissional");
+  return a;
+}
+const SHORT = {nome:"Nome",nascimento:"Nascimento",sexo:"Sexo",whatsapp:"WhatsApp",email:"E-mail",profissao:"Profissão",bairro:"Bairro",emerg_nome:"Emergência",emerg_tel:"Tel. emergência",origem:"Conheceu por",
+ modalidade:"Modalidade",objetivos:"Objetivos",objetivo_principal:"Meta 3 meses",experiencia:"Já praticou",atividade_atual:"Exercita hoje",frequencia:"Pretende treinar",horario:"Horários",
+ pausas:"Ritmo",gosta:"Gosta",nao_gosta:"Não gosta",preferencias_obs:"Obs.",experiencia_ruim_desc:"Experiência ruim",
+ parq7_desc:"PAR-Q outro motivo",condicoes:"Condições",condicoes_outras:"Outras",cronica_desc:"Doença crônica",cirurgia_desc:"Cirurgias",implantes_desc:"Implantes",medicamentos_desc:"Medicamentos",acompanhamento_desc:"Acompanhamento",
+ gestacao:"Gestação",gestacao_semanas:"Semanas",gestacao_liberacao:"Liberação médica",alergias:"Alergias",fuma:"Fuma",alcool:"Álcool",
+ dor_regioes:"Dor em",dor_intensidade:"Intensidade",dor_piora:"Piora/alivia",limitacao_fisica_desc:"Limitação física",limitacao_dia:"Dificuldade no dia a dia",lesoes:"Lesões",restricao_desc:"Evitar",
+ trabalho:"Trabalho",sono_horas:"Sono",sono_qualidade:"Qualidade do sono",estresse:"Estresse",alimentacao_tipo:"Alimentação",alimentacao_tipo_desc:"Detalhe",refeicoes:"Refeições/dia",alimentacao:"Avalia alimentação",acompanhamento_nutri:"Nutricionista",agua:"Água",
+ responsavel:"Responsável",assinatura:"Assinatura"};
+
+const ICON = {pessoal:"👤",objetivos:"🎯",preferencias:"💪",parq:"❤️",saude:"🩺",dores:"🦴",rotina:"🌙",termo:"✍️"};
+function buildText(){
+  const nome = (state.nome||"").trim();
+  const L = [`📋 *ANAMNESE · ESPAÇO HARMIA*`, nome ? `*${nome}*` : "", `_Preenchida em ${new Date().toLocaleDateString("pt-BR")}_`].filter(Boolean);
+  const parqSim = [1,2,3,4,5,6,7].filter(i=>state["parq"+i]==="Sim");
+  const al = alerts();
+  if(al.length){ L.push("", "⚠️ *ATENÇÃO*"); al.forEach(x=>L.push("- "+x)); }
+  STEPS.forEach(s=>{
+    if(s.id==="termo") return;
+    const rows = s.fields.filter(f=>visible(f) && filled(state[f.id]) && f.type!=="agree" && f.type!=="yesno" && !/^parq\d$/.test(f.id) && !(s.id==="pessoal" && f.id==="nome"));
+    const extra = [];
+    if(s.id==="parq") extra.push(parqSim.length ? `Respondeu *sim* nas perguntas ${parqSim.join(", ")}` : "Respondeu *não* a todas");
+    if(!rows.length && !extra.length) return;
+    L.push("", `${ICON[s.id]||""} *${s.title.toUpperCase()}*`);
+    extra.forEach(x=>L.push(x));
+    rows.forEach(f=>{
+      const v = state[f.id]; const lab = SHORT[f.id]||f.label;
+      if(Array.isArray(v) && v.length>1){ L.push(`*${lab}:*`); v.forEach(x=>L.push("- "+x)); }
+      else L.push(`*${lab}:* ${fmt(f,v)}`);
+    });
+  });
+  L.push("", "✍️ *TERMO*", `Assinado por: ${state.assinatura||""}` + (state.responsavel?`\nResponsável: ${state.responsavel}`:""), "Termos e LGPD aceitos", "", "_Perguntas de sim/não que não aparecem = não_");
+  return L.join("\n");
+}
+const WA_MAX = 1800;
+
+function renderSummary(){
+  document.getElementById("stepCount").textContent = "Revisão";
+  document.getElementById("barFill").style.width = "100%";
+  document.getElementById("nav").hidden = true;
+  const al = alerts();
+  const txt = buildText();
+  const full = `https://api.whatsapp.com/send?phone=${WHATSAPP_STUDIO}&text=${encodeURIComponent(txt)}`;
+  let html = `<h2>Confira suas respostas</h2><p class="lead">Se estiver tudo certo, envie para o studio pelo WhatsApp.</p>`;
+  if(al.length) html += `<div class="note">${al.map(esc).join("<br>")}</div>`;
+  html += `<div class="summary">` + STEPS.filter(s=>s.id!=="termo").map(s=>{
+    const rows = s.fields.filter(f=>visible(f) && filled(state[f.id]) && f.type!=="agree");
+    if(!rows.length) return "";
+    return `<h3>${esc(s.title)}</h3><dl>` + rows.map(f=>`<dt>${esc(f.label)}</dt><dd>${esc(fmt(f,state[f.id]))}</dd>`).join("") + `</dl>`;
+  }).join("") + `<h3>Termo</h3><dl><dt>Assinado por</dt><dd>${esc(state.assinatura||"")}${state.responsavel?`\nResponsável: ${esc(state.responsavel)}`:""}</dd></dl></div>`;
+  html += `<div class="actions">
+      <a class="primary" href="${full}" target="_blank" rel="noopener" style="padding:14px 18px;border-radius:12px;font-weight:600">Enviar pelo WhatsApp</a>
+      <button type="button" class="ghost" id="editBtn">Editar respostas</button></div>
+    <p class="lead" style="font-size:14px;margin-top:18px;text-align:center">O WhatsApp não abriu com as respostas? <button type="button" id="copyBtn" style="all:unset;cursor:pointer;color:var(--brand);font-weight:600;text-decoration:underline">Copie aqui</button> e cole na conversa com o studio.</p>`;
+  html += `<textarea id="fallback" hidden readonly aria-label="Respostas para copiar"></textarea>`;
+  app.innerHTML = html;
+  document.getElementById("editBtn").onclick = ()=>{ step = 0; save(); renderStep(); window.scrollTo(0,0); };
+  document.getElementById("copyBtn").onclick = async ()=>{
+    try{ await navigator.clipboard.writeText(txt); toast("Respostas copiadas"); }
+    catch(e){
+      const ta=document.getElementById("fallback"); ta.hidden=false; ta.value=txt; ta.focus(); ta.select();
+      try{ if(document.execCommand("copy")) { toast("Respostas copiadas"); return; } }catch(_){}
+      toast("Selecione o texto e copie");
+    }
+  };
+}
+function toast(m){ const t=document.getElementById("toast"); t.textContent=m; t.classList.add("on"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("on"),2200); }
+
+if(step>=STEPS.length) renderSummary(); else renderStep();
+</script>
+</body>
+</html>
