@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Anamnese · Espaço Harmia</title>
-<meta name="description" content="Ficha de anamnese do Espaço Harmia. Leva cerca de 10 minutos.">
+<meta name="description" content="Ficha de anamnese do Espaço Harmia.">
 <meta property="og:title" content="Anamnese · Espaço Harmia">
-<meta property="og:description" content="Preencha antes da sua primeira aula. Leva cerca de 10 minutos.">
+<meta property="og:description" content="Conte um pouco sobre você para aulas ainda mais personalizadas.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://espacoharmia7l-ui.github.io/anamnese/">
 <meta property="og:image" content="https://espacoharmia7l-ui.github.io/anamnese/preview.png">
@@ -142,7 +142,7 @@ const idade = s => {
 };
 
 const STEPS = [
- { id:"pessoal", title:"Sobre você", intro:"Suas respostas ajudam o professor a montar um treino seguro e do seu jeito. Leva uns 10 minutos.", fields:[
+ { id:"pessoal", title:"Sobre você", intro:"Suas respostas ajudam o professor a montar um treino seguro e do seu jeito.", fields:[
   {id:"nome", label:"Nome completo", type:"text", req:true, auto:"name"},
   {id:"nascimento", label:"Data de nascimento", type:"date", req:true, max:new Date().toISOString().slice(0,10)},
   {id:"sexo", label:"Sexo", type:"radio", req:true, options:["Feminino","Masculino","Prefiro não informar"]},
