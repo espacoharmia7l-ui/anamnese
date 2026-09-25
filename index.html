@@ -450,10 +450,22 @@ function renderSummary(){
     <p class="lead" style="font-size:14px;margin-top:18px;text-align:center">O WhatsApp não abriu com as respostas? <button type="button" id="copyBtn" style="all:unset;cursor:pointer;color:var(--brand);font-weight:600;text-decoration:underline">Copie aqui</button> e cole na conversa com o studio.</p>`;
   html += `<textarea id="fallback" hidden readonly aria-label="Respostas para copiar"></textarea>`;
   app.innerHTML = html;
+  // Grava no Alinea assim que chega nesta tela — não espera o toque no botão
+  // do WhatsApp, que é só um aviso extra pro estúdio e nem todo mundo
+  // consegue/sabe usar (idosos, sem WhatsApp instalado, etc.). O clique no
+  // botão chama de novo como reforço (mesmo submissionId, então se a
+  // primeira já tiver gravado, a segunda é ignorada como duplicada).
+  submitAnamnese();
   // Não usa preventDefault: o link do WhatsApp abre normalmente de qualquer
   // jeito, isto só dispara a gravação no Alinea em paralelo.
   document.getElementById("sendBtn").addEventListener("click", submitAnamnese);
-  document.getElementById("editBtn").onclick = ()=>{ step = 0; save(); renderStep(); window.scrollTo(0,0); };
+  document.getElementById("editBtn").onclick = ()=>{
+    // Editar conta como uma nova tentativa de envio — gera um submissionId
+    // novo, senão a versão revisada nunca seria gravada (a antiga já
+    // ocupou esse id, e o banco rejeita duplicata).
+    submissionId = null;
+    step = 0; save(); renderStep(); window.scrollTo(0,0);
+  };
   document.getElementById("copyBtn").onclick = async ()=>{
     try{ await navigator.clipboard.writeText(txt); toast("Respostas copiadas"); }
     catch(e){
